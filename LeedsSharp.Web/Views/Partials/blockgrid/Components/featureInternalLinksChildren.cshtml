@@ -5,9 +5,9 @@
 }
 
 <div class="grid">
-    @foreach (IPublishedContent varWebpage in UmbracoContext!.PublishedRequest!.PublishedContent!.Children<IPublishedContent>()!) //LOOP THROUGH LINKS
+    @foreach (var childPage in Umbraco.AssignedContentItem.Children<IPublishedContent>()!) //LOOP THROUGH LINKS
     {
-        var thumbnail = varWebpage.Value<IPublishedContent>("pageThumbnail");
+        var thumbnail = childPage.Value<IPublishedContent>("pageThumbnail");
         <div class="g-col-12 g-col-md-6 g-col-lg-4">
             <div class="card h-100 shadow">
                 @if (thumbnail != null)
@@ -20,9 +20,9 @@
             </div>*@
                 <div class="card-body">
                     <h5 class="card-title pb-1"><a class="nav-link stretched-link"
-                                                   href="@varWebpage.Url()">@varWebpage.Value("pageTitle")</a></h5>
+                                                   href="@childPage.Url()">@childPage.Value("pageTitle")</a></h5>
                     <p class="card-text pb-2">
-                        @varWebpage.Value("pageDescription")
+                        @childPage.Value("pageDescription")
                     </p>
                 </div>
             </div>

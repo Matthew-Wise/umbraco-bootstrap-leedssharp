@@ -9,7 +9,7 @@
 }*@
 
 @{
-    IPublishedContent vThisPage = UmbracoContext!.PublishedRequest!.PublishedContent!;
+    IPublishedContent vThisPage = Umbraco.AssignedContentItem;
     int intCurLevel = vThisPage.Level;
     IPublishedContent thisSectionPage = vThisPage.Ancestor(2)!;
     if (vThisPage.Level == 2) { thisSectionPage = vThisPage; }

@@ -3,7 +3,6 @@
 
 @{
     Layout = null;
-    var currentPage = Model;
 }
 <header class="screen--header sticky-top shadow-b bg-light pb-1">
     <nav class="container-xxl navbar navbar-nav navbar-expand-lg">
@@ -34,7 +33,7 @@
                                 <li class="nav-item text-center @childClass">
                                     @if (string.IsNullOrEmpty(childClass))
                                     {
-                                        <a class="nav-link @Html.If(menuItem.IsActive(currentPage, true), "active")" href="@menuItem.Url()" target="@menuItem.Target">@menuItem.Name</a>
+                                        <a class="nav-link @Html.If(menuItem.IsActive, "active")" href="@menuItem.Url()" target="@menuItem.Target">@menuItem.Name</a>
                                     }
                                     else
                                     {
@@ -44,7 +43,7 @@
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             @foreach (var subItem in menuItem.Children ?? [])
                                             {
-                                                <li><a class="dropdown-item @Html.If(subItem.IsActive(currentPage, true), "active")" href="@subItem.Url()">@subItem.Name</a></li>
+                                                <li><a class="dropdown-item @Html.If(subItem.IsActive, "active")" href="@subItem.Url()">@subItem.Name</a></li>
                                             }
                                         </ul>
                                     }
